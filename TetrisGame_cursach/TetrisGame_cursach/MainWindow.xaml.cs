@@ -32,26 +32,22 @@ namespace TetrisGame_cursach
             new BitmapImage(new Uri("TetrisAssets/Figure-T.png", UriKind.Relative))
         };
 
-        string[] musiclist = new string[]
-        {
-            "Music/Tetris-ElectroSwing.wav",
-            "Music/Tetris-metal.wav",
-            "Music/Tetris-miatriss_remix_.wav",
-            "Music/Tetris-original.wav",
-            "Music/Tetris-phonk.wav"
-        };
-
         private bool gamePause;
         private readonly Image[,] imageControls;
         private GameState gameState = new GameState();
+        private MusicList musicList = new MusicList();
+        GameMusicPlayer musicPlayer = new GameMusicPlayer();
+
 
         public MainWindow()
         {
             InitializeComponent();
             imageControls = GameWindowSetup(gameState.GameGrid);
             gamePause = true;
-            
+
+            musicPlayer.GmRandomPlay();
         }
+
         #region Draw machine
         /// <summary>
         /// Задаем параметры игрового поля
@@ -104,6 +100,7 @@ namespace TetrisGame_cursach
             foreach (GridPosition pos in figure.TilePositions())
             {
                 imageControls[pos.Row, pos.Column].Source = TileImages[figure.ID];
+                imageControls[pos.Row, pos.Column].Opacity = 1;
             }
         }
 
@@ -148,9 +145,9 @@ namespace TetrisGame_cursach
         {
             DrawGrid(gameState.GameGrid);
             DrawGhostFigure(gameState.CurrentFigure);
-            DrawFigure(gameState.CurrentFigure);
             DrawNextBlock(gameState.FigureQu);
             DrawHeldFigure(gameState.HeldFigure);
+            DrawFigure(gameState.CurrentFigure);
 
             ScoreTxt.Text = $"Score: {gameState.Score}";
             LevelTxt.Text = $"Level: {gameState.Level}";
@@ -200,14 +197,14 @@ namespace TetrisGame_cursach
             }
 
             //Цикл сверху бесконечный, а значит мы придем сюда только по окончанию игры
-
             GameOverMenu.Visibility = Visibility.Visible;
-            GameMusicPlayer musicPlayer = new GameMusicPlayer(musiclist);
-            musicPlayer.Stop();
-            MusicName.Text = musicPlayer.MusicName();
+
             FinalScoreTxt.Text = $"Score: {gameState.Score}";
             FinalLevelTxt.Text = $"Level: {gameState.Level}";
             FinalLineTxt.Text = $"Lines: {gameState.Lines}";
+
+            musicPlayer.GmPause();
+
         }
 
         //ставим игру на паузу
@@ -215,10 +212,7 @@ namespace TetrisGame_cursach
         {
             gamePause = true;
             GamePauseMenu.Visibility = Visibility.Visible;
-
-            GameMusicPlayer musicPlayer = new GameMusicPlayer(musiclist);
-            musicPlayer.Stop();
-            MusicName.Text = musicPlayer.MusicName();
+            musicPlayer.GmPause();
         }
         #endregion
 
@@ -277,14 +271,9 @@ namespace TetrisGame_cursach
             Draw(gameState);
         }
         
-        
         // кнопка перезапуска
         private async void PlayAgain_click(object sender, RoutedEventArgs e) 
         {
-            GameMusicPlayer musicPlayer = new GameMusicPlayer(musiclist);
-            musicPlayer.PlayRandom();
-            MusicName.Text = musicPlayer.MusicName();
-
             gameState = new GameState();
             GameOverMenu.Visibility = Visibility.Hidden;
             await GameLoop();
@@ -293,13 +282,11 @@ namespace TetrisGame_cursach
         // кнопка старта игры
         private async void Play_click(object sender, RoutedEventArgs e)
         {
-            GameMusicPlayer musicPlayer = new GameMusicPlayer(musiclist);
-            musicPlayer.PlayRandom();
-            MusicName.Text = musicPlayer.MusicName();
-
             gamePause = false;
             GamePauseMenu.Visibility = Visibility.Hidden;
             await GameLoop();
+
+            musicPlayer.GmContinue(musicList.GetCurrentFile());
         }
 
         private void Exit_click(object sender, RoutedEventArgs e) 

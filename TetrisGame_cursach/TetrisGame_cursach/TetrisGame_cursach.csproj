@@ -11,6 +11,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Music\Tetris-ElectroSwing.wav" />
+    <None Remove="Music\Tetris-metal.wav" />
+    <None Remove="Music\Tetris-miatriss_remix_.wav" />
+    <None Remove="Music\Tetris-original.wav" />
+    <None Remove="Music\Tetris-phonk.wav" />
     <None Remove="TetrisAssets\Figure-I.png" />
     <None Remove="TetrisAssets\Figure-J.png" />
     <None Remove="TetrisAssets\Figure-L.png" />
@@ -35,6 +40,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Music\Tetris-ElectroSwing.wav" />
+    <Resource Include="Music\Tetris-metal.wav" />
+    <Resource Include="Music\Tetris-miatriss_remix_.wav" />
+    <Resource Include="Music\Tetris-original.wav" />
+    <Resource Include="Music\Tetris-phonk.wav" />
     <Resource Include="TetrisAssets\Figure-J.png" />
     <Resource Include="TetrisAssets\Figure-L.png" />
     <Resource Include="TetrisAssets\Figure-Q.png" />
