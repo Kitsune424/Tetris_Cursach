@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Xml.Linq;
 
 namespace _08_bidirectional_linear_list
 {
@@ -69,8 +70,8 @@ namespace _08_bidirectional_linear_list
             }
             else                // если уже есть элементы
             {
+                tail.Next = node;
                 node.Previous = tail; 
-                tail.Next = node;       
                 tail = tail.Next;
             }
         }
@@ -80,10 +81,14 @@ namespace _08_bidirectional_linear_list
         /// </summary>
         public void RemoveFirst()
         {
-            if (head == null)
-                throw new InvalidOperationException("List is empty");
-
-            head = head.Next; // теперь головной элемент - это след значение
+            if (head != null)
+            {
+                head = head.Next;
+                if (head != null)
+                    head.Previous = null;
+                else
+                    tail = null;
+            }
         }
 
         /// <summary>
@@ -91,19 +96,13 @@ namespace _08_bidirectional_linear_list
         /// </summary>
         public void RemoveLast()
         {
-            if (head == null)
-                throw new InvalidOperationException("List is empty");
-
-            // список из одного элемента.Удаление последнего есть удаление самого себя
-            if (head.Next == null)
-            {
-                head = null;
-                return;
-            }
-            else
+            if (tail != null)
             {
                 tail = tail.Previous;
-                tail.Next = null;
+                if (tail != null)
+                    tail.Next = null;
+                else
+                    head = null;
             }
         }
 
@@ -256,20 +255,31 @@ namespace _08_bidirectional_linear_list
         /// <param name="index"></param>
         public void RemoveBefore(int index)
         {
-            if (index < 0 || index > Count())
-                throw new IndexOutOfRangeException($"Выход за пределы значений");
-            if (index == 1) // удалить перед втормы = удалить первый
-            {
-                RemoveFirst();
+            if (index <= 0 || head == null)
                 return;
-            }
 
             Node<T> current = head;
-            for (int i = 0; i < index - 2; i++)
+            for (int i = 0; i < index - 1 && current != null; i++)
             {
                 current = current.Next;
             }
-            current.Next = current.Next.Next;
+
+            if (current == null || current.Previous == null)
+            {
+                return;
+            }
+
+            Node<T> nodeToRemove = current.Previous;
+            current.Previous = nodeToRemove.Previous;
+            if (nodeToRemove.Previous != null)
+            {
+                nodeToRemove.Previous.Next = current;
+            }
+            else
+            {
+                head = current;
+            }
+            nodeToRemove = null;
         }
 
         /// <summary>
@@ -278,21 +288,32 @@ namespace _08_bidirectional_linear_list
         /// <param name="index"></param>
         public void RemoveAfter(int index)
         {
-            if (index < 0 || index > Count())
-                throw new IndexOutOfRangeException($"Выход за пределы значений");
-
-            if (index == Count() - 2) // удаление послед предпосл = удаление последнего
-            {
-                RemoveLast();
+            if (index < 0 || head == null)
                 return;
-            }
+            
 
             Node<T> current = head;
-            for (int i = 0; i < index; i++)
+            for (int i = 0; i < index && current != null; i++)
             {
                 current = current.Next;
             }
-            current.Next = current.Next.Next;
+
+            if (current == null || current.Next == null)
+            {
+                return;
+            }
+
+            Node<T> nodeToRemove = current.Next;
+            current.Next = nodeToRemove.Next;
+            if (nodeToRemove.Next != null)
+            {
+                nodeToRemove.Next.Previous = current;
+            }
+            else
+            {
+                tail = current;
+            }
+            nodeToRemove = null;
         }
         #endregion
 

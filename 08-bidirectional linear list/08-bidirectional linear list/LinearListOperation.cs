@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace _08_bidirectional_linear_list
 {
@@ -9,14 +10,13 @@ namespace _08_bidirectional_linear_list
         /// Заполнение списка
         /// </summary>
         /// <param name="N"></param>
-        public static LinkList<int> Fill(int N)
+        public static void Fill(LinkList<int> list, int N)
         {
-            LinkList<int> tmp = new LinkList<int>();
+            list.Clear();
 
             Random rnd = new Random();
             for (int i = 0; i < N; i++)
-                tmp.AddFirst(rnd.Next(0, 10));
-            return tmp;
+                list.AddFirst(rnd.Next(0, 10));
         }
         #endregion
 
