@@ -1,13 +1,20 @@
 ﻿namespace TetrisGame_cursach
 {   
-    /// <summary>
-    /// хранит информациюю по положении сетки
-    /// </summary>
     public class GridPosition
     {
+        /// <summary>
+        /// Строка
+        /// </summary>
         public int Row { get; set; }
+
+        /// <summary>
+        /// Столбец
+        /// </summary>
         public int Column { get; set; }
 
+        /// <summary>
+        /// хранит информациюю по положении внутри сетки
+        /// </summary>
         public GridPosition(int row, int column)
         {
             Row = row;

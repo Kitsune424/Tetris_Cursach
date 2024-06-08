@@ -1,12 +1,20 @@
-﻿using System.Windows.Media;
-
-namespace TetrisGame_cursach
+﻿namespace TetrisGame_cursach
 {
     public class MusicList
     {
-        private List<string> musicFiles;    // cборник музыки
-        private int ID;                     // Идентификатор трека
+        /// <summary>
+        /// Списко путей к музыкальным файлам
+        /// </summary>
+        private List<string> musicFiles;
 
+        /// <summary>
+        /// Идентификационный номер трека
+        /// </summary>
+        private int ID;
+
+        /// <summary>
+        /// Плейлист фоновой музыки
+        /// </summary>
         public MusicList()
         {
             ID = 0;
@@ -56,6 +64,10 @@ namespace TetrisGame_cursach
             return musicFiles[ID];
         }
 
+        /// <summary>
+        /// Полдсчет кол-ва треков в списке
+        /// </summary>
+        /// <returns></returns>
         private int Count()
         {
             return musicFiles.Count;

@@ -1,13 +1,15 @@
-﻿using System;
-
-namespace TetrisGame_cursach
+﻿namespace TetrisGame_cursach
 {
-    /// <summary>
-    /// statemachine все возможные состояния
-    /// </summary>
     public class GameState
     {
+        /// <summary>
+        /// Текущая фигура
+        /// </summary>
         private Figure currentFigure;
+
+        /// <summary>
+        /// Текущая фигура
+        /// </summary>
         public Figure CurrentFigure
         {
             get => currentFigure;
@@ -19,19 +21,54 @@ namespace TetrisGame_cursach
         }
 
         #region Parameters
+        /// <summary>
+        /// Количество уничтоженных линий
+        /// </summary>
         private int lines;
+
+        /// <summary>
+        /// Множитель очков от количества уничтоженных линий
+        /// </summary>
         private int streak;
 
-        public GameGrid GameGrid { get; } //ссылка на игровую сетку
-        public FigureQu FigureQu { get; } //ссылка на очередь
+        /// <summary>
+        /// Инициализирует новый экземпляр класса GameGrid
+        /// </summary>
+        public GameGrid GameGrid { get; }
+
+        /// <summary>
+        /// Инициализирует новый экземпляр класса FigureQu
+        /// </summary>
+        public FigureQu FigureQu { get; }
+
+        /// <summary>
+        /// Инициализирует новый экземпляр класса HeldFigure
+        /// </summary>
         public Figure HeldFigure { get; private set; }
 
+        /// <summary>
+        /// Состояние окончания игры
+        /// </summary>
         public bool GameOver { get; private set; }
+
+        /// <summary>
+        /// Состояние возможности удержать текущую фигуру
+        /// </summary>
         public bool CanHold {  get; private set; }
 
-        public int Level { get; private set; } //lvl cnt
-        public int Score { get; private set; } //Score cnt
+        /// <summary>
+        /// Счетчик уровня
+        /// </summary>
+        public int Level { get; private set; }
 
+        /// <summary>
+        /// Счетчик очков
+        /// </summary>
+        public int Score { get; private set; }
+
+        /// <summary>
+        /// Пересчет уровней и очков в зависимости от уроня
+        /// </summary>
         public int Lines 
         {
             get => lines;
@@ -44,6 +81,9 @@ namespace TetrisGame_cursach
         }
         #endregion
 
+        /// <summary>
+        /// statemachine все возможные состояния
+        /// </summary>
         public GameState()
         {
             GameGrid = new GameGrid(22, 10);
@@ -85,6 +125,9 @@ namespace TetrisGame_cursach
             return true;
         }
 
+        /// <summary>
+        /// Удержание фигуры
+        /// </summary>
         public void HoldFigure()
         {
             if (!CanHold)

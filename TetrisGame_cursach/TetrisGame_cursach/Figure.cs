@@ -1,16 +1,35 @@
-﻿using System.Collections.Generic;
-
-namespace TetrisGame_cursach
+﻿namespace TetrisGame_cursach
 {
     public abstract class Figure
     {
+        /// <summary>
+        /// Положение плиток образующих фигру
+        /// </summary>
         protected abstract GridPosition[][] Tiles { get; }
+
+        /// <summary>
+        /// Изначальнй отступ по матрице игровго поля
+        /// </summary>
         protected abstract GridPosition StartOffset { get;}
+
+        /// <summary>
+        /// Идентификация фигуры
+        /// </summary>
         public abstract int ID { get; }
 
+        /// <summary>
+        /// Положение поворота
+        /// </summary>
         private int rotationState;
+
+        /// <summary>
+        /// Смещение текущей фигру по матрице игрового поля
+        /// </summary>
         private GridPosition offset;
 
+        /// <summary>
+        /// Содержит информацию о структуре фигуры и в матрице и ее идентификационном номере
+        /// </summary>
         public Figure()
         {
             offset = new GridPosition(StartOffset.Row, StartOffset.Column);

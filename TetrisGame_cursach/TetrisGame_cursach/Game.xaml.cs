@@ -1,16 +1,21 @@
 ﻿using System.IO;
-using System.Numerics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace TetrisGame_cursach
 {
+    /// <summary>
+    /// Игровое окно
+    /// </summary>
     public partial class Game : Window
     {
+        #region Fields
+        /// <summary>
+        /// Массив спрайтов для игровых плиток
+        /// </summary>
         private readonly ImageSource[] TileImages = new ImageSource[]
         {
             new BitmapImage(new Uri("TetrisAssets/TileEmpty.png", UriKind.Relative)),
@@ -23,6 +28,9 @@ namespace TetrisGame_cursach
             new BitmapImage(new Uri("TetrisAssets/TilePurple.png", UriKind.Relative))
         };
 
+        /// <summary>
+        /// Массив спрайтов для игровых фигур
+        /// </summary>
         private readonly ImageSource[] FigureImages = new ImageSource[]
         {
             new BitmapImage(new Uri("TetrisAssets/FigureEmpty.png", UriKind.Relative)),
@@ -35,13 +43,35 @@ namespace TetrisGame_cursach
             new BitmapImage(new Uri("TetrisAssets/Figure-T.png", UriKind.Relative))
         };
 
+        /// <summary>
+        /// Флаг состояния паузы
+        /// </summary>
         private bool gamePause;
-        private readonly Image[,] imageControls;
-        private GameState gameState = new GameState();
-        private MusicList musicList = new MusicList();
-        public MediaPlayer mediaPlayer = new MediaPlayer();
-        
 
+        /// <summary>
+        /// Общая матрица всех спратов игрового поля
+        /// </summary> 
+        private readonly Image[,] imageControls;
+
+        /// <summary>
+        /// Инициализирует новый экземпляр класса GameState
+        /// </summary>
+        private GameState gameState = new GameState();
+
+        /// <summary>
+        /// Инициализирует новый экземпляр класса GameState
+        /// </summary>
+        private MusicList musicList = new MusicList();
+
+        /// <summary>
+        /// Инициализирует новый экземпляр класса MediaPlayer
+        /// </summary>
+        public MediaPlayer mediaPlayer = new MediaPlayer();
+        #endregion
+
+        /// <summary>
+        /// Инициализирует новый экземляр Window класса Game
+        /// </summary>
         public Game()
         {
             InitializeComponent();
@@ -53,7 +83,7 @@ namespace TetrisGame_cursach
 
         #region Draw machine
         /// <summary>
-        /// Задаем параметры игрового поля
+        /// Создает сетку игрового поля
         /// </summary>
         private Image[,] GameWindowSetup(GameGrid grid)
         {
@@ -80,7 +110,7 @@ namespace TetrisGame_cursach
         }
 
         /// <summary>
-        /// Отрисовка игровой сетки
+        /// Отрисовывает игровую сетку
         /// </summary>
         private void DrawGrid(GameGrid grid)
         {
@@ -118,7 +148,7 @@ namespace TetrisGame_cursach
         }
 
         /// <summary>
-        /// Отрисовка удерживаемой фигуры
+        /// Отображение значка удреживаемой фигуры
         /// </summary>
         /// <param name="heldFigure"></param>
         private void DrawHeldFigure(Figure heldFigure)
@@ -146,7 +176,7 @@ namespace TetrisGame_cursach
         }
         
         /// <summary>
-        /// Отрисовка всех игровых объектов
+        /// Общий метод отрисовки всех обновляемых объектов
         /// </summary>
         private void Draw(GameState gameState)
         {
@@ -187,7 +217,7 @@ namespace TetrisGame_cursach
         }
 
         /// <summary>
-        /// асинхронный GameLoopMachine для автоматического перемещения игровых фигур
+        /// асинхронный GameLoopMachine для автоматического обновления игрового поля
         /// не блокируя пользовательский ввод
         /// </summary>
         /// <returns></returns>
@@ -214,7 +244,7 @@ namespace TetrisGame_cursach
         }
 
         /// <summary>
-        /// Задает состояние игры паузы значение true
+        /// Остановка/возобновление игровой сессии
         /// </summary>
         private async void GamePause()
         {
@@ -237,7 +267,7 @@ namespace TetrisGame_cursach
 
         #region Score writer
         /// <summary>
-        /// Перезаписывает .cfg файл с рекордным кол-вом очков
+        /// Перезаписывает .cfg файл сохраняя рекордное кол-во очков
         /// </summary>
         /// <param name="newScore">новые очки</param>
         /// <param name="newLevel">новые пройденный уровни</param>
@@ -275,12 +305,15 @@ namespace TetrisGame_cursach
         #endregion
 
         #region Music control
+        /// <summary>
+        /// Случайное воспроизведение фоновой музыки при старте игровой сессии
+        /// </summary>
         private void StartPlayAudio()
         {
             string filePath = musicList.GetRandomFile();
             var path = new Uri(filePath, UriKind.Relative);
 
-            mediaPlayer.Volume = 0.5f;
+            mediaPlayer.Volume = 1f;
             mediaPlayer.Open(path);
             mediaPlayer.Play();
             mediaPlayer.MediaEnded += (sender, e) =>
@@ -290,7 +323,7 @@ namespace TetrisGame_cursach
         }
 
         /// <summary>
-        /// Воспроизведение аудио файла
+        /// Воспроизведение аудио файла по пути нахождения
         /// </summary>
         /// <param name="filePath">путь к файлу</param>
         private void PlayTrak(string filePath)
@@ -301,7 +334,7 @@ namespace TetrisGame_cursach
         #endregion
 
         /// <summary>
-        /// Загрузка игрового окна
+        /// Метод запуска Game loop machine при запуске окна игровой сессии
         /// </summary>
         private async void GameWindow_Loaded(object sender, RoutedEventArgs e)
         {
@@ -309,7 +342,7 @@ namespace TetrisGame_cursach
         }
 
         /// <summary>
-        /// Перемещение фигуры нажатием клавиш
+        /// Управление с клавиатуры
         /// </summary>
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
@@ -355,7 +388,11 @@ namespace TetrisGame_cursach
             Draw(gameState);
         }
         
-        // кнопка перезапуска
+        /// <summary>
+        /// Перезапуск игровой сессии по нажатию кнопки
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void PlayAgain_click(object sender, RoutedEventArgs e) 
         {
             gameState = new GameState();
@@ -364,7 +401,11 @@ namespace TetrisGame_cursach
             await GameLoop();
         }
 
-        // кнопка старта игры
+        /// <summary>
+        /// Возобновление игровой сессии по нажатию кнопки
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void Play_click(object sender, RoutedEventArgs e)
         {
             gamePause = false;
@@ -373,6 +414,11 @@ namespace TetrisGame_cursach
             await GameLoop();
         }
 
+        /// <summary>
+        /// Возвращение в главное меню по нажатию кнопки
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainMenu(object sender, RoutedEventArgs e)
         {
             MainMenu menu = new MainMenu();
@@ -380,6 +426,11 @@ namespace TetrisGame_cursach
             menu.Show();
         }
 
+        /// <summary>
+        /// Выход из приложения по нажатию кнопки
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Exit_click(object sender, RoutedEventArgs e) 
         {
             Application.Current.Shutdown();

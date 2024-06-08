@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TetrisGame_cursach.App">
+    <Position X="11" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisGame_cursach.Figure">
+    <Position X="17.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACBAEAAAIAIhAAAAAAAAAAAAAACAAIAAAAABAAAAAA=</HashCode>
+      <FileName>Figure.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisGame_cursach.Figure_I">
+    <Position X="17.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAgAAAAIAAAAABAAAAAA=</HashCode>
+      <FileName>Figure_lib.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisGame_cursach.Figure_J">
+    <Position X="22.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAgAAAAIAAAAABAAAAAA=</HashCode>
+      <FileName>Figure_lib.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisGame_cursach.Figure_L">
+    <Position X="11" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAgAAAAIAAAAABAAAAAA=</HashCode>
+      <FileName>Figure_lib.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisGame_cursach.Figure_Q">
+    <Position X="15.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAgAAAAIAAAAABAAAAAA=</HashCode>
+      <FileName>Figure_lib.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisGame_cursach.Figure_S">
+    <Position X="20" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAgAAAAIAAAAABAAAAAA=</HashCode>
+      <FileName>Figure_lib.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisGame_cursach.Figure_T">
+    <Position X="24.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAgAAAAIAAAAABAAAAAA=</HashCode>
+      <FileName>Figure_lib.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisGame_cursach.Figure_Z">
+    <Position X="13.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAgAAAAIAAAAABAAAAAA=</HashCode>
+      <FileName>Figure_lib.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisGame_cursach.FigureQu">
+    <Position X="24.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAABAAAgAAAAAAAAAAAAAAAAAAABAAAAAAAQA=</HashCode>
+      <FileName>FigureQu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisGame_cursach.Game" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAEEEAKAAAiAEAwIIQAAZQAAgCAAAAAChAAAAAEA=</HashCode>
+      <FileName>Game.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TetrisGame_cursach.GameGrid">
+    <Position X="19.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EADAAAAAAAIAEEAAiAAAAEAAAAAAAAABAAAAAAgAAAA=</HashCode>
+      <FileName>GameGrid.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisGame_cursach.GameState">
+    <Position X="17.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACgAAAAASAAUgAAIQAQAEgAAIBAAAHCgAAEASAAQA=</HashCode>
+      <FileName>GameState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisGame_cursach.GridPosition">
+    <Position X="21.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>GridPosition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisGame_cursach.MainMenu" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAgACAAABAQAgAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MainMenu.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TetrisGame_cursach.MusicList">
+    <Position X="23" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAQAAAAgAAAAAAAAAQAAAAAQAAAQABAAAAAAAA=</HashCode>
+      <FileName>GameMusicPlaylist.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

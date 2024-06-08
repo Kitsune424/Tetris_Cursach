@@ -1,23 +1,38 @@
-﻿using System.Windows.Controls;
-
-namespace TetrisGame_cursach
+﻿namespace TetrisGame_cursach
 {   
-    /// <summary>
-    /// Отвечает за игровую сетку
-    /// </summary>
+    
     public class GameGrid
     {
+        /// <summary>
+        /// Матрица игрового поля
+        /// </summary>
         private readonly int[,] grid;
 
+        /// <summary>
+        /// Строки матрицы игрового поля
+        /// </summary>
         public int Rows { get; }
+
+        /// <summary>
+        /// Колонки матрицы игровго поля
+        /// </summary>
         public int Columns { get; }
 
+        /// <summary>
+        /// Устанвка матрицы
+        /// </summary>
+        /// <param name="rows">строки</param>
+        /// <param name="columns">колонки</param>
+        /// <returns></returns>
         public int this[int rows, int columns]
         {
             get => grid[rows, columns];
             set => grid[rows, columns] = value;
         }
 
+        /// <summary>
+        /// Отвечает за игровую сетку
+        /// </summary>
         public GameGrid (int rows, int columns)
         {
             Rows = rows;
@@ -35,7 +50,6 @@ namespace TetrisGame_cursach
                 columns >= 0 &&
                 columns < Columns;
         }
-
 
         /// <summary>
         /// Проверка на то, что ячейка пуста
@@ -73,7 +87,7 @@ namespace TetrisGame_cursach
         /// <summary>
         /// Очистка заполненной строки
         /// </summary>
-        /// <param name="rows"></param>
+        /// <param name="rows">строки</param>
         private void ClearRow(int rows)
         {
             for (int columns = 0; columns < Columns; columns++)
@@ -109,8 +123,8 @@ namespace TetrisGame_cursach
         /// <summary>
         /// Перемещенеие всех строк вниз на кол-во очищенных
         /// </summary>
-        /// <param name="rows"></param>
-        /// <param name="numRows"></param>
+        /// <param name="rows">строки</param>
+        /// <param name="numRows">номер строки</param>
         private void MoveRowDown(int rows, int numRows)
         {
             for (int columns = 0; columns < Columns; columns++)
