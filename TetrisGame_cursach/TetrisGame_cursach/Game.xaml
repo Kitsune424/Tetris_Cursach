@@ -1,4 +1,4 @@
-﻿<Window x:Class="TetrisGame_cursach.MainWindow"
+﻿<Window x:Class="TetrisGame_cursach.Game"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -76,6 +76,7 @@
                        Text=""
                        TextAlignment="Center"/>
 
+        <!--CONTROLS INFO-->
         </StackPanel>
 
             <StackPanel Grid.Column="1"
@@ -180,6 +181,15 @@
                         BorderBrush="#FF383838"
                         Click="PlayAgain_click"/>
 
+                <Button 
+                        Content="Menu"
+                        Background="#FF383838"
+                        Padding="5"
+                        Margin="0, 10, 0, 0"
+                        Foreground="#CACACA"
+                        BorderBrush="#FF383838"
+                        Click="MainMenu"/>
+
                 <Button x:Name="ExitB"
                         Content="Exit"
                         Background="#FF383838"
@@ -196,7 +206,7 @@
         <Grid x:Name="GamePauseMenu"
               Background="#CE111111"
               Grid.ColumnSpan="4"
-              Visibility="Visible">
+              Visibility="Hidden">
             <StackPanel HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Width="250">
@@ -212,6 +222,15 @@
                         Foreground="#CACACA"
                         BorderBrush="#FF383838"
                         Click="Play_click"/>
+
+                <Button x:Name="MainMenu_B"
+                        Content="Menu"
+                        Background="#FF383838"
+                        Padding="5"
+                        Margin="0, 10, 0, 0"
+                        Foreground="#CACACA"
+                        BorderBrush="#FF383838"
+                        Click="MainMenu"/>
 
                 <Button Content="Exit"
                         Background="#FF383838"

@@ -1,0 +1,97 @@
+﻿<Window x:Class="TetrisGame_cursach.MainMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TetrisGame_cursach"
+        mc:Ignorable="d"
+        Title="TETRIS MAIN MENU" Height="600" Width="800"
+        MinHeight="600" MinWidth="800"
+        Foreground="#CACACA"
+        FontFamily="Inter"
+        FontSize="18">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="480"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.Background>
+            <SolidColorBrush Color="#1E1E1E"></SolidColorBrush>
+        </Grid.Background>
+
+        <Viewbox Grid.Column="1">
+            <Canvas Height="600"
+                    Width="480">
+                <StackPanel Width="480"
+                            Height="600">
+                    <Label Content="TETRIS"
+                           Foreground="#FFCACACA" 
+                           HorizontalAlignment="Center" 
+                           FontSize="72"
+                           Margin="0 50 0 0"/>
+
+                    <Label Content="My Record"
+                           Foreground="#FFCACACA" 
+                           HorizontalAlignment="Center" 
+                           FontSize="24"
+                           Margin="0 0 0 0"/>
+
+                    <Label Content="Score: 999"
+                           x:Name="score"
+                           Foreground="#FFCACACA" 
+                           HorizontalAlignment="Center" 
+                           FontSize="18"
+                           Margin="0 0 0 0"/>
+
+                    <Label Content="Level: 999"
+                           x:Name="level"
+                           Foreground="#FFCACACA" 
+                           HorizontalAlignment="Center" 
+                           FontSize="18"
+                           Margin="0 0 0 0"/>
+                    
+                    <Label Content="Lines: 999"
+                           x:Name="lines"
+                           Foreground="#FFCACACA" 
+                           HorizontalAlignment="Center" 
+                           FontSize="18"
+                           Margin="0 0 0 100"/>
+
+                    <Button x:Name="Play_btn"
+                            Content="PLAY"
+                            FontWeight="Bold"
+                            FontSize="25"
+                            Padding="10"
+                            Background="#FF383838"
+                            Foreground="#CACACA"
+                            BorderBrush="#00707070"
+                            Click="StartGame"/>
+
+                    <Button x:Name="Exit_btn"
+                            Content="EXIT"
+                            FontWeight="Bold"
+                            FontSize="25"
+                            Padding="10"
+                            Background="#FF383838"
+                            Foreground="#CACACA"
+                            BorderBrush="#00707070"
+                            Click="ExitApplication"/>
+
+                    <Label Content="Created by Dmitrij Malegin 2024"
+                           Foreground="#FFCACACA" 
+                           HorizontalAlignment="Left" 
+                           FontSize="10"
+                           Margin="0 60 0 0"/>
+                    
+                    <Label Content="23-Isbo-4b"
+                           Foreground="#FFCACACA" 
+                           HorizontalAlignment="Left" 
+                           FontSize="10"
+                           Margin="0 0 0 0"/>
+                </StackPanel>
+            </Canvas>
+        </Viewbox>
+    </Grid>
+</Window>

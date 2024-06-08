@@ -1,12 +1,15 @@
-﻿using System.Windows;
+﻿using System.IO;
+using System.Numerics;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 
 namespace TetrisGame_cursach
 {
-    public partial class MainWindow : Window
+    public partial class Game : Window
     {
         private readonly ImageSource[] TileImages = new ImageSource[]
         {
@@ -36,16 +39,16 @@ namespace TetrisGame_cursach
         private readonly Image[,] imageControls;
         private GameState gameState = new GameState();
         private MusicList musicList = new MusicList();
-        GameMusicPlayer musicPlayer = new GameMusicPlayer();
+        public MediaPlayer mediaPlayer = new MediaPlayer();
+        
 
-
-        public MainWindow()
+        public Game()
         {
             InitializeComponent();
-            imageControls = GameWindowSetup(gameState.GameGrid);
-            gamePause = true;
+            StartPlayAudio();
 
-            musicPlayer.GmRandomPlay();
+            imageControls = GameWindowSetup(gameState.GameGrid);
+            gamePause = false;
         }
 
         #region Draw machine
@@ -126,6 +129,10 @@ namespace TetrisGame_cursach
                 HoldIMG.Source = FigureImages[heldFigure.ID];
         }
 
+        /// <summary>
+        /// Отрисовка "призрака фигуры" (место и положение преземеления)
+        /// </summary>
+        /// <param name="figure"></param>
         private void DrawGhostFigure(Figure figure)
         {
             int dropDistance = gameState.FigureDropDistance();
@@ -152,7 +159,6 @@ namespace TetrisGame_cursach
             ScoreTxt.Text = $"Score: {gameState.Score}";
             LevelTxt.Text = $"Level: {gameState.Level}";
             LinesTxt.Text = $"Lines: {gameState.Lines}";
-            
         }
         #endregion
 
@@ -198,21 +204,99 @@ namespace TetrisGame_cursach
 
             //Цикл сверху бесконечный, а значит мы придем сюда только по окончанию игры
             GameOverMenu.Visibility = Visibility.Visible;
+            mediaPlayer.Stop();
 
             FinalScoreTxt.Text = $"Score: {gameState.Score}";
             FinalLevelTxt.Text = $"Level: {gameState.Level}";
             FinalLineTxt.Text = $"Lines: {gameState.Lines}";
 
-            musicPlayer.GmPause();
-
+            WriteNewScore(gameState.Score, gameState.Level, gameState.Lines);
         }
 
-        //ставим игру на паузу
-        private void GamePause()
+        /// <summary>
+        /// Задает состояние игры паузы значение true
+        /// </summary>
+        private async void GamePause()
         {
-            gamePause = true;
-            GamePauseMenu.Visibility = Visibility.Visible;
-            musicPlayer.GmPause();
+            if (gamePause == false)
+            {
+                gamePause = true;
+                GamePauseMenu.Visibility = Visibility.Visible;
+                mediaPlayer.Pause();
+            }
+            else
+            {
+                gamePause = false;
+                GamePauseMenu.Visibility = Visibility.Hidden;
+                mediaPlayer.Play();
+                await GameLoop();
+            }
+
+        }
+        #endregion
+
+        #region Score writer
+        /// <summary>
+        /// Перезаписывает .cfg файл с рекордным кол-вом очков
+        /// </summary>
+        /// <param name="newScore">новые очки</param>
+        /// <param name="newLevel">новые пройденный уровни</param>
+        /// <param name="newLines">новые разрушенные линии</param>
+        public void WriteNewScore(int newScore, int newLevel, int newLines)
+        {
+            string currentDirectory = Directory.GetCurrentDirectory();
+            string path = System.IO.Path.Combine(currentDirectory, "score.cfg");
+
+            int currentScore = 0;
+            int currentLevel = 0;
+            int currentLines = 0;
+
+            if (File.Exists(path))
+            {
+                string[] Lines = File.ReadAllLines(path);
+                if (Lines.Length >= 3)
+                {
+                    int.TryParse(Lines[0], out currentScore);
+                    int.TryParse(Lines[1], out currentLevel);
+                    int.TryParse(Lines[2], out currentLines);
+                }
+            }
+
+            if (newScore > currentScore)
+            {
+                using (StreamWriter sw = new StreamWriter(path))
+                {
+                    sw.WriteLine(newScore);
+                    sw.WriteLine(newLevel);
+                    sw.WriteLine(newLines);
+                }
+            }
+        }
+        #endregion
+
+        #region Music control
+        private void StartPlayAudio()
+        {
+            string filePath = musicList.GetRandomFile();
+            var path = new Uri(filePath, UriKind.Relative);
+
+            mediaPlayer.Volume = 0.5f;
+            mediaPlayer.Open(path);
+            mediaPlayer.Play();
+            mediaPlayer.MediaEnded += (sender, e) =>
+            {
+                PlayTrak(musicList.GetNextFile());
+            };
+        }
+
+        /// <summary>
+        /// Воспроизведение аудио файла
+        /// </summary>
+        /// <param name="filePath">путь к файлу</param>
+        private void PlayTrak(string filePath)
+        {
+            mediaPlayer.Open(new Uri(filePath, UriKind.Relative));
+            mediaPlayer.Play();
         }
         #endregion
 
@@ -276,6 +360,7 @@ namespace TetrisGame_cursach
         {
             gameState = new GameState();
             GameOverMenu.Visibility = Visibility.Hidden;
+            StartPlayAudio();
             await GameLoop();
         }
 
@@ -284,9 +369,15 @@ namespace TetrisGame_cursach
         {
             gamePause = false;
             GamePauseMenu.Visibility = Visibility.Hidden;
+            mediaPlayer.Play();
             await GameLoop();
+        }
 
-            musicPlayer.GmContinue(musicList.GetCurrentFile());
+        private void MainMenu(object sender, RoutedEventArgs e)
+        {
+            MainMenu menu = new MainMenu();
+            this.Close();
+            menu.Show();
         }
 
         private void Exit_click(object sender, RoutedEventArgs e) 
