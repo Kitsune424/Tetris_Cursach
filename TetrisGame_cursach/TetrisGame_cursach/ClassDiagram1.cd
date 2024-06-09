@@ -8,7 +8,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="TetrisGame_cursach.Figure">
-    <Position X="17.75" Y="0.5" Width="1.5" />
+    <Position X="17.75" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACBAEAAAIAIhAAAAAAAAAAAAAACAAIAAAAABAAAAAA=</HashCode>
       <FileName>Figure.cs</FileName>
@@ -22,42 +22,42 @@
     </TypeIdentifier>
   </Class>
   <Class Name="TetrisGame_cursach.Figure_J">
-    <Position X="22.25" Y="5" Width="1.5" />
+    <Position X="21.25" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAgAAAAIAAAAABAAAAAA=</HashCode>
       <FileName>Figure_lib.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TetrisGame_cursach.Figure_L">
-    <Position X="11" Y="5" Width="1.5" />
+    <Position X="12.5" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAgAAAAIAAAAABAAAAAA=</HashCode>
       <FileName>Figure_lib.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TetrisGame_cursach.Figure_Q">
-    <Position X="15.5" Y="5" Width="1.5" />
+    <Position X="16" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAgAAAAIAAAAABAAAAAA=</HashCode>
       <FileName>Figure_lib.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TetrisGame_cursach.Figure_S">
-    <Position X="20" Y="5" Width="1.5" />
+    <Position X="19.5" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAgAAAAIAAAAABAAAAAA=</HashCode>
       <FileName>Figure_lib.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TetrisGame_cursach.Figure_T">
-    <Position X="24.5" Y="5" Width="1.5" />
+    <Position X="23" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAgAAAAIAAAAABAAAAAA=</HashCode>
       <FileName>Figure_lib.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TetrisGame_cursach.Figure_Z">
-    <Position X="13.25" Y="5" Width="1.5" />
+    <Position X="14.25" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAgAAAAIAAAAABAAAAAA=</HashCode>
       <FileName>Figure_lib.cs</FileName>

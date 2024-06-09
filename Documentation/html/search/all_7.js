@@ -1,0 +1,8 @@
+var searchData=
+[
+  ['id_0',['ID',['../class_tetris_game__cursach_1_1_figure.html#a543457c24fb528593fbac8c542215dd9',1,'TetrisGame_cursach.Figure.ID'],['../class_tetris_game__cursach_1_1_figure___i.html#a05f305c2f3ae5365d7ee7a27fd7fe63f',1,'TetrisGame_cursach.Figure_I.ID'],['../class_tetris_game__cursach_1_1_figure___j.html#a58200ab84f9b34707242927c54d432e5',1,'TetrisGame_cursach.Figure_J.ID'],['../class_tetris_game__cursach_1_1_figure___l.html#a80b15a76eaec451f58ad13c0d56c96d5',1,'TetrisGame_cursach.Figure_L.ID'],['../class_tetris_game__cursach_1_1_figure___q.html#ae01ef5fc076a1d239b54e13f0f677d2d',1,'TetrisGame_cursach.Figure_Q.ID'],['../class_tetris_game__cursach_1_1_figure___s.html#af6080f90fb8e1359353ca06998e2dcaa',1,'TetrisGame_cursach.Figure_S.ID'],['../class_tetris_game__cursach_1_1_figure___z.html#a649d53840bd155a3cccfdd40cf73b436',1,'TetrisGame_cursach.Figure_Z.ID'],['../class_tetris_game__cursach_1_1_figure___t.html#a0d9831451e8ef5f21b93c36dcb3a4e78',1,'TetrisGame_cursach.Figure_T.ID']]],
+  ['isempty_1',['IsEmpty',['../class_tetris_game__cursach_1_1_game_grid.html#a7d9fd5be459cd0bdbae3823fdbcfaf27',1,'TetrisGame_cursach::GameGrid']]],
+  ['isinside_2',['IsInside',['../class_tetris_game__cursach_1_1_game_grid.html#a38ebdb5d018d2e141cb2d93dbd232001',1,'TetrisGame_cursach::GameGrid']]],
+  ['isrowempty_3',['IsRowEmpty',['../class_tetris_game__cursach_1_1_game_grid.html#a159c04dd20d965946cfc53a05335b4fa',1,'TetrisGame_cursach::GameGrid']]],
+  ['isrowfull_4',['IsRowFull',['../class_tetris_game__cursach_1_1_game_grid.html#a233984ce89c041f57c597ea51e5b9090',1,'TetrisGame_cursach::GameGrid']]]
+];
