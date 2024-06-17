@@ -102,7 +102,7 @@
   <Class Name="TetrisGame_cursach.MainMenu" BaseTypeListCollapsed="true">
     <Position X="14.5" Y="7.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EAAAAAAAAAAAAgACAAABAQAgAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>EAAAAAAAAAAAAgACAAABAQAgAIAAAEAAAAAAAAAAAAA=</HashCode>
       <FileName>MainMenu.xaml.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />

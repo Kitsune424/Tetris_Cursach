@@ -84,6 +84,12 @@ namespace TetrisGame_cursach
             game.Show();
         }
 
+        private void GetInfo(object sender, RoutedEventArgs e)
+        {
+            Info info = new Info();
+            info.ShowDialog();
+        }
+
         /// <summary>
         /// Выход из приложения
         /// </summary>

@@ -57,7 +57,7 @@
                            Foreground="#FFCACACA" 
                            HorizontalAlignment="Center" 
                            FontSize="18"
-                           Margin="0 0 0 100"/>
+                           Margin="0 0 0 50"/>
 
                     <Button x:Name="Play_btn"
                             Content="PLAY"
@@ -68,6 +68,16 @@
                             Foreground="#CACACA"
                             BorderBrush="#00707070"
                             Click="StartGame"/>
+
+                    <Button x:Name="Info_btn"
+                            Content="INFO"
+                            FontWeight="Bold"
+                            FontSize="25"
+                            Padding="10"
+                            Background="#FF383838"
+                            Foreground="#CACACA"
+                            BorderBrush="#00707070"
+                            Click="GetInfo"/>
 
                     <Button x:Name="Exit_btn"
                             Content="EXIT"
